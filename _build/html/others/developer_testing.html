@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Developer Testing &mdash; SunisDown&#39;s NoteBook 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="SunisDown&#39;s NoteBook 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Others" href="index.html"/>
+        <link rel="next" title="DEBUGING" href="how_to_debug.html"/>
+        <link rel="prev" title="Column Store" href="column.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SunisDown's NoteBook
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../programing_language/index.html">Programming language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Others</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="beansdb.html">GoBeansDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bitcask.html">Bitcask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="column.html">Column Store</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Developer Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tdd">TDD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#limitations-of-developer-testing">Limitations of Developer Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_debug.html">DEBUGING</a></li>
+<li class="toctree-l2"><a class="reference internal" href="if_statements.html">IF 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nocache.html">Minimize Filesystem Caching Effects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the_power_of_variable_names.html">如何取一个好的变量名</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunisDown's NoteBook</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Others</a> &raquo;</li>
+        
+      <li>Developer Testing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/others/developer_testing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="developer-testing">
+<h1>Developer Testing<a class="headerlink" href="#developer-testing" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>单元测试(Unit test) 小段程序，从系统中隔离出来单独测试。可能是一个类，一个小程序</li>
+<li>组件测试(Component test) 类，包从完整的系统中隔离出来做测试</li>
+<li>集成测试(Integration test) 多个类，包，组件，或者子系统进行联合测试。这种测试应该越早进行越好，两个类可以集成测试就尽快测试</li>
+<li>回归测试(Regression test) 重复之前的测试用例</li>
+<li>系统测试(System test) 运行整个软件进行测试</li>
+</ul>
+<p>一个项目规模越大，真正写代码的时间占比会减少。而架构，测试，集成占用的时间比例会增长。</p>
+<p>开发人员测试软件的要点：</p>
+<ul class="simple">
+<li>对需求测试，确保需求完成。这部分测试用例应该在开始写代码直接就写好测试用例。</li>
+<li>对架构的关注点测试，确保架构被实现。 这些测试也应该先于代码实现。</li>
+<li>基础测试</li>
+<li>使用检测表，记录在这个项目中犯过的错误。</li>
+</ul>
+<div class="section" id="tdd">
+<h2>TDD<a class="headerlink" href="#tdd" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>先写测试，可以将引入去缺陷到发现并排除权限直接的时间缩减至最短。</li>
+<li>先写测试或者后写测试，在写测试这上面花的时间一样多。</li>
+<li>先写测试，更容易发现BUG，也更容易修复BUG</li>
+<li>先写测试，会强迫你先考虑需求与架构设计，这样对于自己的成长更好，也容易写出优质的代码。</li>
+<li>先写测试，可以暴露不合理的需求，一个烂需求，没有办法很好的实现功能测试</li>
+</ul>
+<p>** 测试很好，但测试不是万能的 **</p>
+</div>
+<div class="section" id="limitations-of-developer-testing">
+<h2>Limitations of Developer Testing<a class="headerlink" href="#limitations-of-developer-testing" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>clean tests 开发人员通常只会写让代码正常运行的测试，比如用正常的数据来做测试，而不是拿脏数据来测试</li>
+<li>100% 的覆盖率不代表测试到位</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="how_to_debug.html" class="btn btn-neutral float-right" title="DEBUGING" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="column.html" class="btn btn-neutral" title="Column Store" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, SunisDown.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>IF 语句 &mdash; SunisDown&#39;s NoteBook 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="SunisDown&#39;s NoteBook 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Others" href="index.html"/>
+        <link rel="next" title="Minimize Filesystem Caching Effects" href="nocache.html"/>
+        <link rel="prev" title="DEBUGING" href="how_to_debug.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SunisDown's NoteBook
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../programing_language/index.html">Programming language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Others</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="beansdb.html">GoBeansDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bitcask.html">Bitcask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="column.html">Column Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_testing.html">Developer Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_debug.html">DEBUGING</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">IF 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nocache.html">Minimize Filesystem Caching Effects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the_power_of_variable_names.html">如何取一个好的变量名</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SunisDown's NoteBook</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Others</a> &raquo;</li>
+        
+      <li>IF 语句</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/others/if_statements.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="if">
+<h1>IF 语句<a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h1>
+<p>如何写好代码是永不过时的话题，if 作为代码中不可缺少的部分，也是将代码写优雅必须要掌握的。</p>
+<p>在写 if 语句的时候，通常遵循一下原则：</p>
+<ul class="simple">
+<li>首先写常见的情况，在处理补常见的。
+常见情况的代码清晰，代码可读性要高</li>
+<li>确保等量分支正确
+类似 &gt; &gt;= 混用的情况</li>
+<li>正常的情况放在 if 的后面，异常情况放在 else 后面。</li>
+</ul>
+<div class="code go highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">ifSuccess</span> <span class="p">{</span>
+<span class="o">//</span> <span class="n">do</span> <span class="n">something</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="o">//</span> <span class="n">do</span> <span class="n">something</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>if 子句后面应该有意义</li>
+</ul>
+<div class="code go highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">Success</span> <span class="p">{</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="o">//</span> <span class="n">do</span> <span class="n">something</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>上面例子里面，if 的子句里面没有任何逻辑，这种代码看起来有点怪，可以修改成</p>
+<div class="code go highlight-default"><div class="highlight"><pre><span></span>if !Success {
+// do something
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li>考虑 else 子句</li>
+</ul>
+<p>上面的例子里面只写了 if 语句，后面并没有跟 else，这种情况下需要确认自己是否考虑周全，并且在注释里面说明为什么没有 else 语句</p>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="nocache.html" class="btn btn-neutral float-right" title="Minimize Filesystem Caching Effects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="how_to_debug.html" class="btn btn-neutral" title="DEBUGING" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, SunisDown.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
