@@ -8,3 +8,4 @@ Contents:
 .. toctree::
 
    errors/index
+   tips/index
