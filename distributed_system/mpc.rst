@@ -1,7 +1,6 @@
-algorithmic aspects of parallel data processing
+分布式计算值 MPC
 ===============================================
 
-Tags: Product
 
 现代的数据分析通常是跑在大规模的 shared-nothing 集群上。
 
